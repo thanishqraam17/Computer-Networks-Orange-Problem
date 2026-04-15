@@ -78,7 +78,7 @@ link s1 s2 down
 ### 3. Recovery Verification
 After the failure, the ping shows temporary packet loss before the controller restores connectivity via an alternate path.
 
-![Recovery Results](CN%203.jpg)
+![Recovery Results](CN%203.png)
 
 ---
 
