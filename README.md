@@ -15,7 +15,7 @@ The goal of this project is to build a network that can survive a link failure. 
 To run this project, you need:
 - Linux system  
 - Mininet  
-- POX controller  
+- POX installed  
 
 If you do not have POX, follow these steps:
 
@@ -29,14 +29,14 @@ This will create a folder named `pox` on your Desktop.
 ---
 
 ## Files in this Repository
-- `topo.py` – Defines the triangle topology with redundant links  
-- `controller.py` – Handles failure detection and rerouting  
+1. `topo.py` – Defines the triangle network structure with redundant links  
+2. `controller.py` – Contains logic to detect failure and reroute traffic  
 
 ---
 
 ## How to Run the Project
 
-### Step 1: Copy files to POX
+### Step 1: Copy files into POX ext folder
 ```bash
 cp topo.py controller.py ~/Desktop/pox/ext/
 ```
@@ -65,7 +65,7 @@ Before the failure, the network is stable and hosts can ping each other.
 ---
 
 ### 2. Simulating Link Failure
-We break the primary link using the Mininet command:
+We break the primary link using the Mininet terminal command:
 
 ```bash
 link s1 s2 down
@@ -76,7 +76,7 @@ link s1 s2 down
 ---
 
 ### 3. Recovery Verification
-After the failure, the ping shows temporary packet loss before the controller restores connectivity via an alternate path.
+After the failure, the ping shows temporary packet loss before the controller restores the path.
 
 ![Recovery Results](CN%203.png)
 
@@ -84,7 +84,7 @@ After the failure, the ping shows temporary packet loss before the controller re
 
 ## Test Case Commands
 
-### Initial Connectivity Test
+### Initial Ping Test
 ```bash
 h1 ping -c 5 h2
 ```
@@ -115,11 +115,3 @@ sh ovs-ofctl dump-flows s1
 ## References
 - POX Official Documentation: https://noxrepo.github.io/pox-doc/html/  
 - Mininet Walkthrough: http://mininet.org/walkthrough/  
-
----
-
-## Conclusion
-This project demonstrates:
-- Detection of link failure using an SDN controller  
-- Dynamic recovery using alternate paths  
-- Improved network reliability and fault tolerance  
